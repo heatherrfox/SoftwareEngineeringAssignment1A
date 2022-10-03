@@ -1,46 +1,58 @@
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Student {
-    private String name;
+    private static final AtomicInteger count = new AtomicInteger(0);
+    private String fname;
+    private String lname;
     private int age;
     private LocalDate DOB;
     private int ID;
     private String username;
-    private List<CourseProgramme> courses;
-    private List<Module> modules;
+    private List<CourseProgramme> courseProgrammes = new ArrayList<>();
+    private List<Module> modules = new ArrayList<>();
 
-    public Student(String name ,LocalDate DOB, int ID) {
-        this.name = name;
+    public Student(String fname ,String lname, LocalDate DOB) {
+        this.fname = fname;
+        this.lname = lname;
         this.DOB = DOB;
-        this.ID = ID;
+        ID = count.incrementAndGet();
         age = getAge();
         username = getUsername();
     }
 
-    public String getName(){
-        return name;
+    public String getFirstName(){
+        return fname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getLastName() {return lname;}
+
+    public void setFirstName(String fname) {
+        this.fname = fname;
+    }
+
+    public void setLastName(String lname) {
+        this.lname = lname;
     }
 
     public int getAge() {
         LocalDate currentDate = LocalDate.now();
 
-        if ((DOB != null) && (currentDate!=null)) {
-            age = Period.between(DOB, currentDate).getYears();
+        if(DOB != null) {
+            if(currentDate.isBefore(DOB)) {
+                throw new IllegalArgumentException("Date of Birth must be before today's date");
+            }
+            else {
+                age = Period.between(DOB, currentDate).getYears();
+
+            }
         } else {
-            age = 0;
+            throw new IllegalStateException("Date of Birth must contain a value");
         }
-
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public LocalDate getDOB() {
@@ -60,22 +72,26 @@ public class Student {
     }
 
     public String getUsername() {
-        if ((name != null) && (ID != 0)) {
-            return username = name + ID;
+        if ((fname != null) && (lname != null) && (ID != 0)) {
+            return username = fname + lname + ID;
         } else {
-            throw new IllegalStateException("Name or ID cannot a must contain a value");
+            throw new IllegalStateException("Name and ID must contain a value");
         }
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void addCourseProgramme(CourseProgramme courseProgramme) {
+        courseProgrammes.add(courseProgramme);
     }
 
-    public void addCourseProgramme(CourseProgramme courseProgramme) {
-        courses.add(courseProgramme);
+    public List<CourseProgramme> getCourseProgrammes() {
+        return courseProgrammes;
     }
 
     public void addModule(Module module) {
         modules.add(module);
+    }
+
+    public List<Module> getModules() {
+        return modules;
     }
 }
