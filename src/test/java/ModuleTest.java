@@ -17,12 +17,12 @@ public class ModuleTest {
     @Test
     public void test_getStudents() {
         module.addStudent(TestResources.student);
-        assertEquals(Collections.singletonList(TestResources.student), module.getStudents());
+        assertEquals(Collections.singleton(TestResources.student), module.getStudents());
     }
 
     @Test
     public void test_getAssociatedCourses() {
         module.addCourse(TestResources.course);
-        assertEquals(Collections.singletonList(TestResources.course), module.getAssociatedCourses());
+        assertEquals(Collections.singleton(TestResources.course), module.getCourses());
     }
 }

@@ -1,17 +1,18 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 public class Module {
     private String moduleName;
     private String moduleID;
-    private List<Student> students = new ArrayList<>();
-    private List<CourseProgramme> associatedCourses = new ArrayList<>();
+    private HashSet<Student> moduleStudents;
+    private HashSet<CourseProgramme> moduleCourses;
     private Lecturer lecturer;
 
     public Module(String moduleName, String moduleID, Lecturer lecturer) {
         this.moduleName = moduleName;
         this.moduleID = moduleID;
         this.lecturer = lecturer;
+        moduleStudents = new HashSet<>();
+        moduleCourses = new HashSet<>();
     }
 
     public String getModuleName() {
@@ -27,18 +28,18 @@ public class Module {
     }
 
     public void addStudent(Student student) {
-        students.add(student);
+        moduleStudents.add(student);
     }
 
-    public List<Student> getStudents() {
-        return students;
+    public HashSet<Student> getStudents() {
+        return moduleStudents;
     }
 
     public void addCourse(CourseProgramme course) {
-        associatedCourses.add(course);
+        moduleCourses.add(course);
     }
 
-    public List<CourseProgramme> getAssociatedCourses() {
-        return associatedCourses;
+    public HashSet<CourseProgramme> getCourses() {
+        return moduleCourses;
     }
 }

@@ -67,6 +67,6 @@ public class LecturerTest {
     @Test
     public void test_getModules() {
         lecturer.addModule(TestResources.module);
-        assertEquals(Collections.singletonList(TestResources.module), lecturer.getModules());
+        assertEquals(Collections.singleton(TestResources.module), lecturer.getModules());
     }
 }

@@ -1,20 +1,21 @@
 import org.joda.time.DateTime;
 
 import java.time.DateTimeException;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class CourseProgramme {
     private String courseName;
-    private List<Module> modules = new ArrayList<>();
-    private List<Student> students =new ArrayList<>();
     private DateTime startDate;
     private DateTime endDate;
-
+    private HashSet<Module> courseModules;
+    private HashSet<Student> courseStudents;
     public CourseProgramme(String courseName, DateTime startDate, DateTime endDate){
         this.courseName = courseName;
         setStartDate(startDate);
         setEndDate(endDate);
+        courseModules = new HashSet<>();
+        courseStudents = new HashSet<>();
     }
 
     public String getCourseName() {
@@ -46,18 +47,18 @@ public class CourseProgramme {
     }
 
     public void addModule(Module module) {
-        modules.add(module);
+        courseModules.add(module);
     }
 
-    public List<Module> getModules() {
-        return modules;
+    public HashSet<Module> getModules() {
+        return courseModules;
     }
 
     public void addStudent(Student student) {
-        students.add(student);
+        courseStudents.add(student);
     }
 
-    public List<Student> getStudents() {
-        return students;
+    public HashSet<Student> getStudents() {
+        return courseStudents;
     }
 }
