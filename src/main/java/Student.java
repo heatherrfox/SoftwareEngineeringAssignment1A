@@ -1,7 +1,6 @@
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Student {
@@ -12,8 +11,8 @@ public class Student {
     private LocalDate DOB;
     private int ID;
     private String username;
-    private List<CourseProgramme> courseProgrammes = new ArrayList<>();
-    private List<Module> modules = new ArrayList<>();
+    private HashSet<CourseProgramme> studentCourseProgrammes;
+    private HashSet<Module> studentModules;
 
     public Student(String fname ,String lname, LocalDate DOB) {
         this.fname = fname;
@@ -22,6 +21,8 @@ public class Student {
         ID = count.incrementAndGet();
         age = getAge();
         username = getUsername();
+        studentCourseProgrammes = new HashSet<>();
+        studentModules = new HashSet<>();
     }
 
     public String getFirstName(){
@@ -80,18 +81,18 @@ public class Student {
     }
 
     public void addCourseProgramme(CourseProgramme courseProgramme) {
-        courseProgrammes.add(courseProgramme);
+        studentCourseProgrammes.add(courseProgramme);
     }
 
-    public List<CourseProgramme> getCourseProgrammes() {
-        return courseProgrammes;
+    public HashSet<CourseProgramme> getCourseProgrammes() {
+        return studentCourseProgrammes;
     }
 
     public void addModule(Module module) {
-        modules.add(module);
+        studentModules.add(module);
     }
 
-    public List<Module> getModules() {
-        return modules;
+    public HashSet<Module> getModules() {
+        return studentModules;
     }
 }

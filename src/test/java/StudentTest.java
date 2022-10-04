@@ -67,12 +67,12 @@ public class StudentTest {
     @Test
     public void test_getModules() {
         student.addModule(TestResources.module);
-        assertEquals(Collections.singletonList(TestResources.module), student.getModules());
+        assertEquals(Collections.singleton(TestResources.module), student.getModules());
     }
 
     @Test
     public void test_getCourseProgrammes() {
         student.addCourseProgramme(TestResources.course);
-        assertEquals(Collections.singletonList(TestResources.course),student.getCourseProgrammes());
+        assertEquals(Collections.singleton(TestResources.course),student.getCourseProgrammes());
     }
 }

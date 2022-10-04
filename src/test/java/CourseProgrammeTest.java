@@ -40,14 +40,14 @@ public class CourseProgrammeTest {
     @Test
     public void test_getModules() {
         courseProgramme.addModule(TestResources.module);
-        assertEquals(Collections.singletonList(TestResources.module),
+        assertEquals(Collections.singleton(TestResources.module),
                 courseProgramme.getModules());
     }
 
     @Test
     public void test_getStudents() {
         courseProgramme.addStudent(TestResources.student);
-        assertEquals(Collections.singletonList(TestResources.student),
+        assertEquals(Collections.singleton(TestResources.student),
                 courseProgramme.getStudents());
     }
 
