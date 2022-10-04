@@ -1,3 +1,5 @@
+package ie.nuigalway.obrien.ct417ass1a;
+
 import java.util.HashSet;
 
 public class Module {

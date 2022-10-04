@@ -1,3 +1,4 @@
+import ie.nuigalway.obrien.ct417ass1a.Lecturer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

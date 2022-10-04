@@ -1,8 +1,9 @@
+package ie.nuigalway.obrien.ct417ass1a;
+
 import org.joda.time.DateTime;
 
 import java.time.DateTimeException;
 import java.util.HashSet;
-import java.util.List;
 
 public class CourseProgramme {
     private String courseName;
