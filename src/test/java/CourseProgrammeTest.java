@@ -1,3 +1,4 @@
+import ie.nuigalway.obrien.ct417ass1a.CourseProgramme;
 import org.joda.time.DateTime;
 import org.junit.jupiter.api.Test;
 

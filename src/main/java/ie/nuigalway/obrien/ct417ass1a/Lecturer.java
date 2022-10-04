@@ -1,38 +1,41 @@
+package ie.nuigalway.obrien.ct417ass1a;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Student {
+public class Lecturer {
     private static final AtomicInteger count = new AtomicInteger(0);
     private String fname;
+
     private String lname;
     private int age;
     private LocalDate DOB;
     private int ID;
     private String username;
-    private HashSet<CourseProgramme> studentCourseProgrammes;
-    private HashSet<Module> studentModules;
+    private HashSet<Module> lecturerModules;
 
-    public Student(String fname ,String lname, LocalDate DOB) {
+    public Lecturer(String fname, String lname, LocalDate DOB) {
         this.fname = fname;
         this.lname = lname;
         this.DOB = DOB;
         ID = count.incrementAndGet();
         age = getAge();
         username = getUsername();
-        studentCourseProgrammes = new HashSet<>();
-        studentModules = new HashSet<>();
+        lecturerModules = new HashSet<>();
     }
 
     public String getFirstName(){
         return fname;
     }
 
-    public String getLastName() {return lname;}
-
     public void setFirstName(String fname) {
         this.fname = fname;
+    }
+
+    public String getLastName() {
+        return lname;
     }
 
     public void setLastName(String lname) {
@@ -54,6 +57,10 @@ public class Student {
             throw new IllegalStateException("Date of Birth must contain a value");
         }
         return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public LocalDate getDOB() {
@@ -79,20 +86,15 @@ public class Student {
             throw new IllegalStateException("Name and ID must contain a value");
         }
     }
-
-    public void addCourseProgramme(CourseProgramme courseProgramme) {
-        studentCourseProgrammes.add(courseProgramme);
-    }
-
-    public HashSet<CourseProgramme> getCourseProgrammes() {
-        return studentCourseProgrammes;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void addModule(Module module) {
-        studentModules.add(module);
+        lecturerModules.add(module);
     }
 
     public HashSet<Module> getModules() {
-        return studentModules;
+        return lecturerModules;
     }
 }
