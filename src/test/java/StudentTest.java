@@ -23,7 +23,7 @@ public class StudentTest {
         assertEquals(10, student.getDOB().getMonthValue());
         assertEquals(2001, student.getDOB().getYear());
         assertEquals(4, student.getID());
-        assertEquals(20, student.getAge());
+        assertEquals(21, student.getAge());
         assertEquals("HeatherOBrien4", student.getUsername());
     }
 
